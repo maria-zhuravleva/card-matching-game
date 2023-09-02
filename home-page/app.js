@@ -1,8 +1,82 @@
 /*-------------------------- Constants -------------------------*/
-const cards = []
+const cardImg = [
+    {
+        Name: "A Nature Morte",
+        Date: 1933,
+        URL: "assets/images/matisse paintings/A Nature Morte, 1933.png"
+    },
+    {
+        Name: "Fleurs de Neige",
+        Date: 1954,
+        URL: "assets/images/matisse paintings/Fleurs de Neige, 1954.png"
+    },
+    {
+        Name: "Grande Masque",
+        Date: 1948,
+        URL: "assets/images/matisse paintings/Grande Masque, 1948.png"
+    },
+    {
+        Name: "Interior with Egyptian Curtain",
+        Date: 1948,
+        URL: "assets/images/matisse paintings/Interior with Egyptian Curtain, 1948.png"
+    },
+    {
+        Name: "L'Escargot",
+        Date: 1952,
+        URL: "assets/images/matisse paintings/L'Escargot.png"
+    },
+    {
+        Name: "L'Homme endormi",
+        Date: 1936,
+        URL: "assets/images/matisse paintings/L'Homme endormi, 1936.png"
+    },
+    {
+        Name: "La Chute d'Icare",
+        Date: 1943,
+        URL: "assets/images/matisse paintings/La Chute d'Icare, 1943.png"
+    },
+    {
+        Name: "La Gerbe",
+        Date: 1954,
+        URL: "assets/images/matisse paintings/La Gerbe, 1954.png"
+    },
+    {
+        Name: "Nadia au menton pointu",
+        Date: 1948,
+        URL: "assets/images/matisse paintings/Nadia au menton pointu, 1948.png"
+    },
+    {
+        Name: "Nu Bleu",
+        Date: 1952,
+        URL: "assets/images/matisse paintings/Nu Bleu, 1952.png"
+    },
+    {
+        Name: "Nuit De Noel",
+        Date: 1951,
+        URL: "assets/images/matisse paintings/Nuit De Noel, 1951.png"
+    },
+    {
+        Name: "Parakeet from Parakeet and the Mermaid",
+        Date: 1952,
+        URL: "assets/images/matisse paintings/Parakeet from Parakeet and the Mermaid, 1925.png"
+    },
+    {
+        Name: "Patitcha Masque",
+        Date: 1947,
+        URL: "assets/images/matisse paintings/Patitcha. Masque, 1947.png"
+    },
+    {
+        Name: "Vegetaux",
+        Date: 1954,
+        URL: "assets/images/matisse paintings/Vegetaux, 1954.png"
+    }
+]
+
+
 const winningComboCards = []
 
 /*--------------------- Variables (state) ---------------------*/
+let cards = []
 let cardsFlipped = []
 let pairsMatched = []
 let movesTotal = 0
