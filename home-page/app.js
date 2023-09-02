@@ -1,9 +1,12 @@
 /*-------------------------- Constants -------------------------*/
-
-
+const cards = []
+const winningComboCards = []
 
 /*--------------------- Variables (state) ---------------------*/
-
+let cardsFlipped = []
+let pairsMatched = []
+let movesTotal = 0
+// let turn, winner, tie, maxNumMoves
 
 
 /*----------------- Cached Element References ----------------*/
@@ -19,8 +22,8 @@
 
 
 // 1) Define the required variables used to track the state of the game
-// Create an array that keeps track of the flipped cards
-// Create an array that keeps track of matching pairs
+// //Create an array that keeps track of the flipped cards
+// //Create an array that keeps track of matching pairs
 // Create a variable that counts total moves and increment it by 1 every time the player moves
 
 

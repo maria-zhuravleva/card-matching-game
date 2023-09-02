@@ -3,25 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./card-matching-challenge.css">
+    <link rel="stylesheet" href='/home-page/style.css'>
     <script src="./card-matching-challenge.js"></script>
     <title>Intro to Art Match</title>
 </head>
 <body>
+    <header id="header-main">
+        <h1>Artful Recollections</h1>
+        <h3>Canvas Card Quest</h3>
+        <nav class="navbar">
+            <a href="/browse-the-collection/browse-the-collection.html">Browse the Collection</a></li>
+            <a href="/card-matching-challenge/card-matching-challenge.html">Test your Knowledge</a></li>
+            <a href="/test-your-knowledge/test-your-knowledge.html">Card Matching Challenge</a></li>
+        </nav>
+</header>
     <section>
-        <header>
-            <h3>Novice</h3>
-            <h5>Intro to Art Match</h5>
+        <header class="header-sub">
+            <h2>Novice</h2>
+            <h4>Intro to Art Match</h4>
         </header>
-        <section class="board">
-            <div class="card" id="c0"></div>
-            <div class="card" id="c1"></div>
-            <div class="card" id="c2"></div>
-            <div class="card" id="c3"></div>
-            <div class="card" id="c4"></div>
-            <div class="card" id="c5"></div>
-            <div class="card" id="c6"></div>
-            <div class="card" id="c7"></div>
+        <section class="novice-info-container">
+            <div id="time-left">Time Left</div>
+            <div id="total-moves">Total Moves</div>
+        </section>
+        <section class="board novice-card-container">
+            <div class="card-back">
+                <img class="acrylic-back" src="/assets/images/poppy-flower.jpg" width="800px">
+            </div>
+            <div class="card acrylic-back-card flexbox-item" id="c0"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c1"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c2"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c3"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c4"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c5"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c6"></div>
+            <div class="card acrylic-back-card flexbox-item" id="c7"></div>
         </section>
     </section>
 </body>
