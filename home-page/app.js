@@ -118,7 +118,51 @@ let pairsMatched = 0
 let movesTotal = 0
 let gameOver = false
 // let turn, winner, tie, maxNumMoves
-
+let boardCards = [
+    {
+        position: "c0",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    },
+    {
+        position: "c1",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    },
+    {
+        position: "c2",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    },
+    {
+        position: "c3",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    },
+    {
+        position: "c4",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    },
+    {
+        position: "c5",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    },
+    {
+        position: "c6",
+        painting: shuffleCards(cardImgs),
+        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+        matched: false
+    }
+]
+// console.log(boardCards)
 
 /*----------------- Cached Element References ----------------*/
 
@@ -135,10 +179,11 @@ function shuffleCards(arr) {
         const randomIdx = Math.floor(Math.random() * (idx +1))
         shuffledCards.splice(randomIdx, 0, card)
     })
-    return shuffledCards
+    return shuffledCards[0]
 }
 
 // console.log(shuffleCards(cardImgs))
+
 
 
 // 1) Define the required variables used to track the state of the game
