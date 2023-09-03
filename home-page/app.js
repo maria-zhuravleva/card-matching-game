@@ -181,14 +181,26 @@ cards.forEach(function(card, idx) {
     const imgName = cardImgs[idx]
     cardImg.setAttribute("src", imgName)
     // console.log(cardImg)
-    card.addEventListener("click", flipCards)
+    card.addEventListener("click", function flipCards(evt) {
+        const cardIdx = parseInt(evt.target.id.replace('c', ''))
+        // console.log(cardIdx)
+        // if the board is locked, don't do anything
+        if (isBoardLocked) return
+        // if the same card was clicked, return
+        if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
+        // toggle css class after the card was clicked
+        card.setAttribute("class", ".flipped")
+        // add flipped cards to the array
+        cardsFlipped.push(card)
+        // when two cards were clicked, check for a match
+        if (cardsFlipped.length === 2) {
+            checkForMatch()
+        }
+    })
 })
 
 
 /*------------------------- Functions -------------------------*/
-function flipCards() {
-
-}
 
 function shuffleCards(arr) {
     const shuffledCards = []
