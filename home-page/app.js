@@ -10,8 +10,6 @@ const cardImgs = [
     "assets/paintings/winter.jpg"
 ]
 
-
-
 //     {
 //         Name: "L'Escargot",
 //         Date: 1952,
@@ -165,9 +163,17 @@ let boardCards = [
 // console.log(boardCards)
 
 /*----------------- Cached Element References ----------------*/
-const cardOneEl = document.querySelector("#c0")
-console.log(cardOneEl) 
-
+const cardOneEl = document.querySelector("#c0") 
+const cardTwoEl = document.querySelector("#c1")
+const cardThreeEl = document.querySelector("#c2")
+const cardFourEl = document.querySelector("#c3")
+const cardFiveEl = document.querySelector("#c4")
+const cardSixEl = document.querySelector("#c5")
+const cardSevenEl = document.querySelector("#c6")
+const cardEightEl = document.querySelector("#c7")
+// console.log(cardEightEl)
+const cards = document.querySelectorAll(".card")
+// console.log(cards)
 
 /*--------------------- Event Listeners ----------------------*/
 
