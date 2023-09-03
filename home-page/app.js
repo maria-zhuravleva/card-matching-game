@@ -1,13 +1,13 @@
 /*-------------------------- Constants -------------------------*/
 const cardImgs = [
-    "assets/images/matisse paintings/L'Escargot.png", 
-    "assets/images/matisse paintings/L'Escargot.png",
-    "assets/images/matisse paintings/La Chute d'Icare, 1943.png",
-    "assets/images/matisse paintings/La Chute d'Icare, 1943.png",
-    "assets/images/matisse paintings/Nu Bleu, 1952.png",
-    "assets/images/matisse paintings/Nu Bleu, 1952.png",
-    "assets/images/matisse paintings/Nuit De Noel, 1951.png",
-    "assets/images/matisse paintings/Nuit De Noel, 1951.png"
+    "assets/paintings/clouds.jpg", 
+    "assets/paintings/clouds.jpg", 
+    "assets/paintings/summer.jpg",
+    "assets/paintings/summer.jpg",
+    "assets/paintings/tree.jpg",
+    "assets/paintings/tree.jpg",
+    "assets/paintings/winter.jpg",
+    "assets/paintings/winter.jpg"
 ]
 
 
