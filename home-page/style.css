@@ -67,8 +67,13 @@ header {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
+    backface-visibility: hidden;
 }
 
+.card.flipped {
+    transform: rotateY(180deg);
+    transition: transform 0.5s ease;
+}
 
 .novice-info-container {
     display: flex;
@@ -78,10 +83,14 @@ header {
     width: 370px;
     margin: 0 auto;
 }
+.card {
+    background-image: url('../assets/stroke.png');
+}
 
 img {
     height: 110px;
     width: 80px;
+    border-radius: 7px;
 }
 .board.novice-card-container {
     text-align: center;

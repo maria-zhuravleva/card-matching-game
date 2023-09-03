@@ -1,14 +1,15 @@
 /*-------------------------- Constants -------------------------*/
 const cardImgs = [
-    "assets/paintings/clouds.jpg", 
-    "assets/paintings/clouds.jpg", 
-    "assets/paintings/summer.jpg",
-    "assets/paintings/summer.jpg",
-    "assets/paintings/tree.jpg",
-    "assets/paintings/tree.jpg",
-    "assets/paintings/winter.jpg",
-    "assets/paintings/winter.jpg"
+    "../assets/img/clouds.jpg", 
+    "../assets/img/clouds.jpg",
+    "../assets/img/summer.jpg",
+    "../assets/img/summer.jpg",
+    "../assets/img/tree.jpg",
+    "../assets/img/tree.jpg",
+    "../assets/img/winter.jpg",
+    "../assets/img/winter.jpg"
 ]
+// console.log(cardImgs)
 
 //     {
 //         Name: "L'Escargot",
@@ -113,7 +114,7 @@ const cardImgs = [
 // let cards = []
 let cardsFlipped = []
 let pairsMatched = 0
-let movesTotal = 0
+// let movesTotal = 0
 let gameOver = false
 let isBoardLocked = false
 let boardCards = [
@@ -199,8 +200,56 @@ cards.forEach(function(card, idx) {
     })
 })
 
+// cardOneEl.addEventListener('click', toggleCard)
+
+// let isFrontVisible = true;
+// function toggleCard() {
+//     const cardFront = cardOneEl.querySelector('.card-front')
+//     const cardBack = cardOneEl.querySelector('.card-back')
+
+//     if (cardFront.style.display === 'none') {
+//         // show the front of the card if it's hidden
+//         cardFront.style.display = 'block'
+//         cardBack.style.display = 'none'
+//     } else {
+//         // hide the front of the card if it's visible
+//         cardFront.style.display = 'none'
+//         cardBack.style.display = 'block'
+    // }
+    // if (isFrontVisible) {
+    //     //if front of the card is visible, switch to the back of the card
+    //     cardFront.style.backgroundImage = `url('${cardBack.src}')`
+    //     isFrontVisible = false
+    // } else {
+    //     // if the back of the card is visible, switch to the front of the card
+    //     cardFront.style.backgroundImage = `url('../assets/img/clouds.jpg')`
+    //     isFrontVisible = true
+    // }
+// }
 
 /*------------------------- Functions -------------------------*/
+function checkForMatch() {
+    // check if there's two cards in the array, return if no
+    if (cardsFlipped.length !== 2) return
+
+    // assign flipped cards from the array to variables
+    const cardOne = cardsFlipped[0]
+    const cardTwo = cardsFlipped[1]
+
+    // get the source attribute from two flipped cards
+    const cardOneAttribute = cardOne.getAttribute('src')
+    const cardTwoAttribute = cardTwo.getAttribute('src')
+
+    if (cardOneAttribute === cardTwoAttribute) {
+        // there's a match
+        // wait for a second while checking if cards are matched
+        setTimeout(function() {
+            cardOne.classList.remove('flipped')
+            cardTwo.classList.remove('flipped')
+            cardsFlipped.length = 0
+        }, 1000)
+    }
+}
 
 function shuffleCards(arr) {
     const shuffledCards = []
@@ -210,46 +259,21 @@ function shuffleCards(arr) {
     })
     return shuffledCards[0]
 }
-
 // console.log(shuffleCards(cardImgs))
 
 
 
-// 1) Define the required variables used to track the state of the game
-// //Create an array that keeps track of the flipped cards
-// //Create an array that keeps track of matching pairs
-// Create a variable that counts total moves and increment it by 1 every time the player moves
-
-
-// 2) Store cached element references
-// HTML elements that represent the cards
 
 
 // 3) Initialize a game by calling a function to render the game
 
-
-// 4) Define the required constants
-// Create an array of cards
-// Create an array of winning combinations
-
-
-// 5) Add event listeners to cards
-
-
-// 6) Create a function to handle a player clicking a card 
-
-
 // 7) Create a function to update the state of the board
-
 
 // 8) Create a function to switch the turn of the player
 
-
 // 9) Create a function to check if there’s a tie
 
-
 // 10) Create a function to check if there’s a winner
-
 
 // 11) Create a function to reset the game
 
