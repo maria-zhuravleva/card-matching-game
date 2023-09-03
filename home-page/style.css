@@ -29,11 +29,6 @@ header {
     background-color:#c3c3c3;
 }
 
-/* .navbar {
-    display: flex;
-    justify-content: space-between;
-} */
-
 .novice-card-container {
     /* background-image: url('assets/poppy-flower.jpg'); */
     text-align: center;
@@ -84,6 +79,10 @@ header {
     margin: 0 auto;
 }
 
+img {
+    height: 110px;
+    width: 80px;
+}
 .board.novice-card-container {
     text-align: center;
     display: flex;
@@ -139,10 +138,3 @@ header {
     width: 370px;
 }
 
-.card-back {
-    height: 200px;
-}
-
-.card.acrylic-back-card{
-    background-image: url(../assets/images/acrylic\ brush\ stroke.png);
-}

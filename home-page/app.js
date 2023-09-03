@@ -109,15 +109,15 @@ const cardImgs = [
 //     Date: 1954,
 //     URL: "assets/images/matisse paintings/Vegetaux, 1954.png"
 // }
-const winningComboCards = []
+// const winningComboCards = []
                 
 /*--------------------- Variables (state) ---------------------*/
-let cards = []
+// let cards = []
 let cardsFlipped = []
 let pairsMatched = 0
 let movesTotal = 0
 let gameOver = false
-// let turn, winner, tie, maxNumMoves
+let isBoardLocked = false
 let boardCards = [
     {
         position: "c0",
