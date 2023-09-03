@@ -165,7 +165,8 @@ let boardCards = [
 // console.log(boardCards)
 
 /*----------------- Cached Element References ----------------*/
-
+const cardOneEl = document.querySelector("#c0")
+console.log(cardOneEl) 
 
 
 /*--------------------- Event Listeners ----------------------*/
