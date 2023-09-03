@@ -8,7 +8,8 @@ body {
     min-height: 100vh;
 }
 #header-main {
-    width: 850px;
+    background-color: #e8e0d1;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -16,19 +17,25 @@ body {
     margin-top: 5px;
 }
 
+header {
+    text-align: center;
+}
 .header-sub {
     width: 800px;
     height: 90px;
     border: 1px solid black;
     margin-top: 10px;
+    padding-bottom: 10px; 
+    background-color:#c3c3c3;
 }
 
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
-}
+} */
 
 .novice-card-container {
+    /* background-image: url('assets/poppy-flower.jpg'); */
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -36,8 +43,15 @@ body {
     flex-wrap: wrap;
     align-items: center;
     border: 1px solid black;
-    width: 400px;
+    width: 800px;
     height: 300px;
+}
+.board.novice-card-container {
+    background-image: url(../assets/poppy-flower.jpg);
+    background-size: cover;
+    background-position: center center;
+    text-align: center;
+    width: 800px;
 }
 
 .card {
@@ -60,15 +74,6 @@ body {
     overflow: hidden;
 }
 
-header {
-    text-align: center;
-    background-color:#c3c3c3;
-}
-
-h2 {
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
 
 .novice-info-container {
     display: flex;
