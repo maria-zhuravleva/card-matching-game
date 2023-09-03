@@ -176,10 +176,20 @@ const cards = document.querySelectorAll(".card")
 // console.log(cards)
 
 /*--------------------- Event Listeners ----------------------*/
-
+cards.forEach(function(card, idx) {
+    const cardImg = card.querySelector("img")
+    const imgName = cardImgs[idx]
+    cardImg.setAttribute("src", imgName)
+    // console.log(cardImg)
+    card.addEventListener("click", flipCards)
+})
 
 
 /*------------------------- Functions -------------------------*/
+function flipCards() {
+
+}
+
 function shuffleCards(arr) {
     const shuffledCards = []
     arr.forEach(function(card, idx) {
