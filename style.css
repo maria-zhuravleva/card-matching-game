@@ -5,7 +5,7 @@ body {
     padding: 0;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 #header-main {
     background-color: #e8e0d1;
