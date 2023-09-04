@@ -74,33 +74,66 @@ let gameOver, isBoardLocked, pairsMatched = 0
 // console.log(cardEightEl)
 const cards = document.querySelectorAll(".card")
 console.log(cards)
+// const cardContainer = document.querySelector(".novice-card-container")
+// console.log(cardContainer)
 const resetBtn = document.querySelector('button')
 
 /*--------------------- Event Listeners ----------------------*/
 resetBtn.addEventListener('click', init)
 
-cards.forEach(function(card, idx) {
-    const cardImg = card.querySelector("img")
-    const imgName = cardImgs[idx]
-    cardImg.setAttribute("src", imgName)
+// cards.forEach(card => card.addEventListener("click", function flipCards(evt) {
+//         const cardClicked = evt.target.class 
+//         console.log('Clicked card src:', cardClicked)
+//     })
+// )
+cards.forEach(function(card) {
+    // const cardImg = card.querySelector("img")
+    // const imgName = cardImgs[idx]
+    // cardImg.setAttribute("src", imgName)
     // console.log(cardImg)
     card.addEventListener("click", function flipCards(evt) {
-        const cardIdx = parseInt(evt.target.id.replace('c', ''))
-        //console.log(cardIdx)
+        const cardClicked = evt.target.className
+        // console.log(cardClicked)
+        cardsFlipped.push(cardClicked)
+        // console.log(cardClicked)
         // if the board is locked, don't do anything
         if (isBoardLocked) return
         // if the same card was clicked, return
-        if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
+        if (cardsFlipped.length === 1 && cardsFlipped[0] === cardClicked) return
         // toggle css class after the card was clicked
         card.setAttribute("class", ".flipped")
+        // console.log(card)
         // add flipped cards to the array
-        cardsFlipped.push(card)
         // when two cards were clicked, check for a match
         if (cardsFlipped.length === 2) {
             checkForMatch()
         }
     })
 })
+
+
+// cards.forEach(function(card, idx) {
+//     const cardImg = card.querySelector("img")
+//     const imgName = cardImgs[idx]
+//     cardImg.setAttribute("src", imgName)
+//     // console.log(cardImg)
+//     card.addEventListener("click", function flipCards(evt) {
+//         const cardIdx = parseInt(evt.target.id.replace('c', ''))
+//         //console.log(cardIdx)
+//         // if the board is locked, don't do anything
+//         if (isBoardLocked) return
+//         // if the same card was clicked, return
+//         if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
+//         // toggle css class after the card was clicked
+//         card.setAttribute("class", ".flipped")
+//         // add flipped cards to the array
+//         cardsFlipped.push(card)
+//         // when two cards were clicked, check for a match
+//         if (cardsFlipped.length === 2) {
+//             checkForMatch()
+//         }
+//     })
+// })
 
 /*------------------------- Functions -------------------------*/
 function init() {
@@ -187,40 +220,32 @@ shuffleCards()
 //     return arr
 // }
 
-// function shuffleNodes(arr) {
-//     let leng = arr.length
-//     for (let i = leng - 1; i > 0; i --) {
-//         let j = Math.floor(Math.random() * i)
-//         let temp = arr[i]
-//         arr[i] = arr[j]
-//         arr[j] = temp
-//     }
-//     console.log(arr)
-//     return arr
-// }
 
-cards.forEach(function(card, idx) {
-    const cardImg = card.querySelectorAll("img")
-    const imgName = cardImgs[idx]
-    cardImg.forEach(function(node) {
-        node.setAttribute("src", imgName)     
-    })
-    console.log(cardImg)
+
+    
+    // function(card, idx) {
+    // const cardImg = card.querySelectorAll("img")
+    // const imgName = cardImgs[idx]
+    // cardImg.forEach(function(node) {
+    //     node.setAttribute("src", imgName)     
+    // })
     // console.log(cardImg)
-    card.addEventListener("click", function flipCards(evt) {
-        const cardIdx = parseInt(evt.target.id.replace('c', ''))
-        //console.log(cardIdx)
-        // if the board is locked, don't do anything
-        if (isBoardLocked) return
-        // if the same card was clicked, return
-        if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
-        // toggle css class after the card was clicked
-        card.setAttribute("class", ".flipped")
-        // add flipped cards to the array
-        cardsFlipped.push(card)
-        // when two cards were clicked, check for a match
-        if (cardsFlipped.length === 2) {
-            checkForMatch()
-        }
-    })
-})
+    // // console.log(cardImg)
+    // card.addEventListener("click", 
+
+// function flipCards(evt) {
+//     const cardIdx = parseInt(evt.target.id.replace('c', ''))
+//     //console.log(cardIdx)
+//     // if the board is locked, don't do anything
+//     if (isBoardLocked) return
+//     // if the same card was clicked, return
+//     if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
+//     // toggle css class after the card was clicked
+//     card.setAttribute("class", ".flipped")
+//     // add flipped cards to the array
+//     cardsFlipped.push(card)
+//     // when two cards were clicked, check for a match
+//     if (cardsFlipped.length === 2) {
+//         checkForMatch()
+//     }
+// })

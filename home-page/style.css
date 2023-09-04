@@ -31,8 +31,8 @@ header {
 
 .novice-card-container {
     /* background-image: url('assets/poppy-flower.jpg'); */
-    text-align: center;
     display: flex;
+    text-align: center;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -46,7 +46,7 @@ header {
     background-size: cover;
     background-position: center center;
     text-align: center;
-    width: 800px;
+    width: 1000px;
 }
 
 .card {
