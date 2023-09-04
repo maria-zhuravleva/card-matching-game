@@ -14,7 +14,7 @@ let movesTotal = 0
 const cards = document.querySelectorAll(".card")
 // console.log(cards)
 
-const resetBtn = document.querySelector('#reset')
+const resetBtn = document.getElementById('reset')
 // console.log(resetBtn)
 
 let countdownEl = document.getElementById('count-down') 
@@ -24,6 +24,7 @@ let totalMovesEl = document.getElementById('total-moves')
 // console.log(totalMovesEl)
 /*--------------------- Event Listeners ----------------------*/
 cards.forEach(card => card.addEventListener("click", flipCards)) 
+
 resetBtn.addEventListener('click', init)
 
 
@@ -31,16 +32,26 @@ resetBtn.addEventListener('click', init)
 
 
 /*------------------------- Functions -------------------------*/
-shuffleCards()
+// shuffleCards()
 
 function init() {
-    console.log('clicked')
-    unflipCards()
+    // console.log('function called')
+    isBoardLocked = false
+    cardFlipped = false
+    isGameOver = false
+    firstFlippedCard = null
+    secondFlippedCard = null
+    matchedCards = []
+    timeLeft = 20
+    movesTotal = 0
+
+    totalMovesEl.textContent = 'Total Moves: 0'
+
+    cards.forEach(card => card.classList.remove('flipped'))
+
+    shuffleCards()
+    startTimer()
     render()
-    // firstFlippedCard = 0
-    // secondFlippedCard = 0
-    // isBoardLocked = false
-    // cardFlipped = false
 }
 
 
@@ -109,7 +120,7 @@ function checkForMatch() {
         firstFlippedCard.removeEventListener('click', flipCards)
         secondFlippedCard.removeEventListener('click', flipCards)
 
-        checkWin()
+        checkForWin()
 
     } else {
         // return
@@ -117,7 +128,7 @@ function checkForMatch() {
     }
 }
 
-function checkWin() {
+function checkForWin() {
     if (matchedCards.length === 8) {
         isGameOver = true
         showMessage('Congratulation! You won!')
@@ -144,12 +155,6 @@ function shuffleCards() {
         card.style.order = randomNum 
     })
 }
-
-function init() {
-    gameOver = false
-    isBoardLocked = false
-}
-
 
 function showMessage(message) {
     const messageEl = document.getElementById('message')
