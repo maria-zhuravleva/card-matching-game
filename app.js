@@ -1,72 +1,39 @@
 /*-------------------------- Constants -------------------------*/
-// const cardImgs = [
-//     "../assets/img/clouds.jpg", 
-//     "../assets/img/summer.jpg",
-//     "../assets/img/winter.jpg",
-//     "../assets/img/clouds.jpg",
-//     "../assets/img/tree.jpg",
-//     "../assets/img/summer.jpg",
-//     "../assets/img/winter.jpg",
-//     "../assets/img/tree.jpg"
-// ]
-
 
 /*--------------------- Variables (state) ---------------------*/
-let cardsFlipped = []
-let gameOver, isBoardLocked, pairsMatched = 0 
-// let movesTotal = 0
+let gameOver = false
+let isBoardLocked = false
+let cardFlipped = false
+let firstFlippedCard, secondFlippedCard
+let pairsMatched = 0 
+
 
 /*----------------- Cached Element References ----------------*/
-// const cardOneEl = document.querySelector("#c0") 
-// const cardTwoEl = document.querySelector("#c1")
-// const cardThreeEl = document.querySelector("#c2")
-// const cardFourEl = document.querySelector("#c3")
-// const cardFiveEl = document.querySelector("#c4")
-// const cardSixEl = document.querySelector("#c5")
-// const cardSevenEl = document.querySelector("#c6")
-// const cardEightEl = document.querySelector("#c7")
-// console.log(cardEightEl)
 const cards = document.querySelectorAll(".card")
 // console.log(cards)
-// const cardContainer = document.querySelector(".novice-card-container")
-// console.log(cardContainer)
-const resetBtn = document.querySelector('button')
+
+// const resetBtn = document.querySelector('button')
 
 /*--------------------- Event Listeners ----------------------*/
-resetBtn.addEventListener('click', init)
+// resetBtn.addEventListener('click', init)
 
-// cards.forEach(card => card.addEventListener("click", function flipCards(evt) {
-//         const cardClicked = evt.target.class 
-//         console.log('Clicked card src:', cardClicked)
-//     })
-// )
-// const cardImg = card.querySelector("img")
-// const imgName = cardImgs[idx]
-// cardImg.setAttribute("src", imgName)
-// console.log(cardImg)
+cards.forEach(card => card.addEventListener("click", flipCards)) 
 
-cards.forEach(function(card) {
-    card.addEventListener("click", function flipCards(evt) {
-        const cardClicked = evt.target.id
-        // console.log(cardClicked)
-        // add flipped cards to the array
-        cardsFlipped.push(cardClicked)
-        // console.log(cardClicked)
-        // if the board is locked, don't do anything
-        if (isBoardLocked) return
-        // if the same card was clicked, return
-        if (cardsFlipped.length === 1 && cardsFlipped[0] === cardClicked) return
-        // toggle css class after the card was clicked
-        card.setAttribute("class", ".flipped")
-        // card.classList.add("flipped")
-        // console.log(card)
-        // when two cards were clicked, check for a match
-        if (cardsFlipped.length === 2) {
-            checkForMatch() 
-        }
-    })
-})
-console.log(cardsFlipped)
+
+    
+function flipCards() {
+    if (isBoardLocked) return
+
+    if (this === firstFlippedCard) return
+
+    this.classList.add('flipped')
+
+    if (!cardFlipped) {
+        cardFlipped = true
+        secondFlippedCard = this
+        checkForMatch() 
+    }
+}
 
 function checkForMatch() {
     if (cardsFlipped.length !== 2) return
