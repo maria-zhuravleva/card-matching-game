@@ -5,8 +5,8 @@ let isBoardLocked = false
 let cardFlipped = false
 let isGameOver = false
 let firstFlippedCard, secondFlippedCard
-let timeLeft = 100
 let matchedCards = []
+let timeLeft = 100
 
 
 /*----------------- Cached Element References ----------------*/
@@ -16,7 +16,6 @@ const cards = document.querySelectorAll(".card")
 const resetBtn = document.querySelector('#reset')
 // console.log(resetBtn)
 
-let countdownEl = document.getElementById('countdown') 
 /*--------------------- Event Listeners ----------------------*/
 cards.forEach(card => card.addEventListener("click", flipCards)) 
 resetBtn.addEventListener('click', init)
@@ -43,9 +42,28 @@ function render() {
     showMessage('Click on the card to start!')
 }
 
+let countdownEl = document.getElementById('count-down') 
+
+function startTimer() {
+    let timer = setInterval(function() {
+        countdownEl.textContent = 'Time left: ' + timeLeft
+        timeLeft -= 1
+        // console.log(timeLeft)
+        if (isGameOver) {
+            countdownEl.textContent = `Your time is ${timeLeft} seconds`
+            clearInterval(timer)
+        }
+        if (timeLeft < 0) {
+            countdownEl.textContent = 'Time is up!'
+            clearInterval(timer)
+            }
+    }, 1000)
+}
+
 function flipCards() {
     // console.log('clicked')
     // console.log(this)
+    startTimer() 
     if (isBoardLocked) return
     
     if (this === firstFlippedCard) return
@@ -125,11 +143,3 @@ function showMessage(message) {
     }, 3000)
 }
 
-let timer = setInterval(function() {
-    countdownEl.textContent = timeLeft + 'seconds remaining'
-    timeLeft -= 1
-    if (timeLeft < 0) {
-        countdownEl.textContent = 'Finished!'
-        clearInterval(timer)
-        }
-}, 3000)
