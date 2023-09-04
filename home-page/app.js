@@ -1,182 +1,84 @@
 /*-------------------------- Constants -------------------------*/
 const cardImgs = [
     "../assets/img/clouds.jpg", 
-    "../assets/img/clouds.jpg",
     "../assets/img/summer.jpg",
-    "../assets/img/summer.jpg",
-    "../assets/img/tree.jpg",
-    "../assets/img/tree.jpg",
     "../assets/img/winter.jpg",
-    "../assets/img/winter.jpg"
+    "../assets/img/clouds.jpg",
+    "../assets/img/tree.jpg",
+    "../assets/img/summer.jpg",
+    "../assets/img/winter.jpg",
+    "../assets/img/tree.jpg"
 ]
-// console.log(cardImgs)
 
-//     {
-//         Name: "L'Escargot",
-//         Date: 1952,
-//         URL: "assets/images/matisse paintings/L'Escargot.png"
-//     },
-//     {
-//         Name: "L'Escargot",
-//         Date: 1952,
-//         URL: "assets/images/matisse paintings/L'Escargot.png"
-//     },
-//     {
-//         Name: "La Chute d'Icare",
-//         Date: 1943,
-//         URL: "assets/images/matisse paintings/La Chute d'Icare, 1943.png"
-//     },
-//     {
-//         Name: "La Chute d'Icare",
-//         Date: 1943,
-//         URL: "assets/images/matisse paintings/La Chute d'Icare, 1943.png"
-//     },
-//     {
-//         Name: "Nu Bleu",
-//         Date: 1952,
-//         URL: "assets/images/matisse paintings/Nu Bleu, 1952.png"
-//     },
-//     {
-//         Name: "Nu Bleu",
-//         Date: 1952,
-//         URL: "assets/images/matisse paintings/Nu Bleu, 1952.png"
-//     },
-//     {
-//         Name: "Nuit De Noel",
-//         Date: 1951,
-//         URL: "assets/images/matisse paintings/Nuit De Noel, 1951.png"
-//     },
-//     {
-//         Name: "Nuit De Noel",
-//         Date: 1951,
-//         URL: "assets/images/matisse paintings/Nuit De Noel, 1951.png"
-//     }
-// ]
 
-// {
-// {
-//     Name: "Parakeet from Parakeet and the Mermaid",
-//     Date: 1952,
-//     URL: "assets/images/matisse paintings/Parakeet from Parakeet and the Mermaid, 1925.png"
-// }
-//     Name: "Grande Masque",
-//     Date: 1948,
-//     URL: "assets/images/matisse paintings/Grande Masque, 1948.png"
-// },
-// {
-//     Name: "Grande Masque",
-//     Date: 1948,
-//     URL: "assets/images/matisse paintings/Grande Masque, 1948.png"
-// },
-//     Name: "L'Homme endormi",
-//     Date: 1936,
-//     URL: "assets/images/matisse paintings/L'Homme endormi, 1936.png"
-// },
-// {
-//     Name: "Interior with Egyptian Curtain",
-//     Date: 1948,
-//     URL: "assets/images/matisse paintings/Interior with Egyptian Curtain, 1948.png"
-// },
-// {
-//     Name: "A Nature Morte",
-//     Date: 1933,
-//     URL: "assets/images/matisse paintings/A Nature Morte, 1933.png"
-// },
-// {
-//     Name: "Fleurs de Neige",
-//     Date: 1954,
-//     URL: "assets/images/matisse paintings/Fleurs de Neige, 1954.png"
-// },
-//     Name: "Nadia au menton pointu",
-//     Date: 1948,
-//     URL: "assets/images/matisse paintings/Nadia au menton pointu, 1948.png"
-// },
-// {
-//     Name: "La Gerbe",
-//     Date: 1954,
-//     URL: "assets/images/matisse paintings/La Gerbe, 1954.png"
-// },
-    
-// {
-//     Name: "Patitcha Masque",
-//     Date: 1947,
-//     URL: "assets/images/matisse paintings/Patitcha. Masque, 1947.png"
-// },
-
-// {
-//     Name: "Vegetaux",
-//     Date: 1954,
-//     URL: "assets/images/matisse paintings/Vegetaux, 1954.png"
-// }
-// const winningComboCards = []
-                
 /*--------------------- Variables (state) ---------------------*/
 // let cards = []
 let cardsFlipped = []
-let pairsMatched = 0
+let gameOver, isBoardLocked, pairsMatched = 0 
 // let movesTotal = 0
-let gameOver = false
-let isBoardLocked = false
-let boardCards = [
-    {
-        position: "c0",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    },
-    {
-        position: "c1",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    },
-    {
-        position: "c2",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    },
-    {
-        position: "c3",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    },
-    {
-        position: "c4",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    },
-    {
-        position: "c5",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    },
-    {
-        position: "c6",
-        painting: shuffleCards(cardImgs),
-        flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-        matched: false
-    }
-]
-// console.log(boardCards)
+// let boardCards = [
+//     {
+//         position: "c0",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     },
+//     {
+//         position: "c1",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     },
+//     {
+//         position: "c2",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     },
+//     {
+//         position: "c3",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     },
+//     {
+//         position: "c4",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     },
+//     {
+//         position: "c5",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     },
+//     {
+//         position: "c6",
+//         painting: shuffleCards(cardImgs),
+//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
+//         matched: false
+//     }
+// ]
+
 
 /*----------------- Cached Element References ----------------*/
-const cardOneEl = document.querySelector("#c0") 
-const cardTwoEl = document.querySelector("#c1")
-const cardThreeEl = document.querySelector("#c2")
-const cardFourEl = document.querySelector("#c3")
-const cardFiveEl = document.querySelector("#c4")
-const cardSixEl = document.querySelector("#c5")
-const cardSevenEl = document.querySelector("#c6")
-const cardEightEl = document.querySelector("#c7")
+// const cardOneEl = document.querySelector("#c0") 
+// const cardTwoEl = document.querySelector("#c1")
+// const cardThreeEl = document.querySelector("#c2")
+// const cardFourEl = document.querySelector("#c3")
+// const cardFiveEl = document.querySelector("#c4")
+// const cardSixEl = document.querySelector("#c5")
+// const cardSevenEl = document.querySelector("#c6")
+// const cardEightEl = document.querySelector("#c7")
 // console.log(cardEightEl)
 const cards = document.querySelectorAll(".card")
-// console.log(cards)
+console.log(cards)
+const resetBtn = document.querySelector('button')
 
 /*--------------------- Event Listeners ----------------------*/
+resetBtn.addEventListener('click', init)
+
 cards.forEach(function(card, idx) {
     const cardImg = card.querySelector("img")
     const imgName = cardImgs[idx]
@@ -184,7 +86,7 @@ cards.forEach(function(card, idx) {
     // console.log(cardImg)
     card.addEventListener("click", function flipCards(evt) {
         const cardIdx = parseInt(evt.target.id.replace('c', ''))
-        // console.log(cardIdx)
+        //console.log(cardIdx)
         // if the board is locked, don't do anything
         if (isBoardLocked) return
         // if the same card was clicked, return
@@ -200,34 +102,19 @@ cards.forEach(function(card, idx) {
     })
 })
 
-// cardOneEl.addEventListener('click', toggleCard)
-
-// let isFrontVisible = true;
-// function toggleCard() {
-//     const cardFront = cardOneEl.querySelector('.card-front')
-//     const cardBack = cardOneEl.querySelector('.card-back')
-
-//     if (cardFront.style.display === 'none') {
-//         // show the front of the card if it's hidden
-//         cardFront.style.display = 'block'
-//         cardBack.style.display = 'none'
-//     } else {
-//         // hide the front of the card if it's visible
-//         cardFront.style.display = 'none'
-//         cardBack.style.display = 'block'
-    // }
-    // if (isFrontVisible) {
-    //     //if front of the card is visible, switch to the back of the card
-    //     cardFront.style.backgroundImage = `url('${cardBack.src}')`
-    //     isFrontVisible = false
-    // } else {
-    //     // if the back of the card is visible, switch to the front of the card
-    //     cardFront.style.backgroundImage = `url('../assets/img/clouds.jpg')`
-    //     isFrontVisible = true
-    // }
-// }
-
 /*------------------------- Functions -------------------------*/
+function init() {
+    gameOver = false
+    isBoardLocked = false
+    // cardsFlipped.length = 0
+    // shuffleCards(cardImgs)
+    // console.log(shuffleCards(cardImgs))
+    //console.log(cardImgs)
+    // shuffleNodes(cards)
+    // console.log(shuffleNodes(cards))
+}
+
+
 function checkForMatch() {
     // check if there's two cards in the array, return if no
     if (cardsFlipped.length !== 2) return
@@ -242,38 +129,98 @@ function checkForMatch() {
 
     if (cardOneAttribute === cardTwoAttribute) {
         // there's a match
+        pairsMatched += 1
+        console.log(pairsMatched)
         // wait for a second while checking if cards are matched
         setTimeout(function() {
-            cardOne.classList.remove('flipped')
-            cardTwo.classList.remove('flipped')
-            cardsFlipped.length = 0
+            showMessage("It's a match!")
+
+            cardsFlipped.length = 0         
         }, 1000)
+
+        if (pairsMatched === 4) {
+            // console.log("Congratulations! You won the game!")
+
+            showMessage("Congratulations! You won the game!")
+            }
     }
 }
 
-function shuffleCards(arr) {
-    const shuffledCards = []
-    arr.forEach(function(card, idx) {
-        const randomIdx = Math.floor(Math.random() * (idx +1))
-        shuffledCards.splice(randomIdx, 0, card)
-    })
-    return shuffledCards[0]
+function showMessage(message) {
+    const messageEl = document.getElementById('message')
+    messageEl.textContent = message
+
+    setTimeout(function() {
+        messageEl.textContent = ''
+    }, 2000)
 }
+
+// function shuffleCards(arr) {
+//     const shuffledCards = []
+//     arr.forEach(function(card, idx) {
+//         const randomIdx = Math.floor(Math.random() * (idx +1))
+//         shuffledCards.splice(randomIdx, 0, card)
+//     })
+//     return shuffledCards
+// }
+// console.log(shuffleCards(cardImgs))
+// console.log(shuffleCards(cardImgs))
 // console.log(shuffleCards(cardImgs))
 
+function shuffleCards() {
+    cards.forEach(function(card) {
+        let randomNum = Math.floor(Math.random() * 8)
+        card.style.order = randomNum 
+    })
+}
+shuffleCards()
 
+// function shuffleCards(arr){
+//     let leng = arr.length
+//     for (let i = leng - 1; i > 0; i --) {
+//         let j = Math.floor(Math.random() * i)
+//         let temp = arr[i]
+//         arr[i] = arr[j]
+//         arr[j] = temp
+//     }
+//     console.log(arr)
+//     return arr
+// }
 
+// function shuffleNodes(arr) {
+//     let leng = arr.length
+//     for (let i = leng - 1; i > 0; i --) {
+//         let j = Math.floor(Math.random() * i)
+//         let temp = arr[i]
+//         arr[i] = arr[j]
+//         arr[j] = temp
+//     }
+//     console.log(arr)
+//     return arr
+// }
 
-
-// 3) Initialize a game by calling a function to render the game
-
-// 7) Create a function to update the state of the board
-
-// 8) Create a function to switch the turn of the player
-
-// 9) Create a function to check if there’s a tie
-
-// 10) Create a function to check if there’s a winner
-
-// 11) Create a function to reset the game
-
+cards.forEach(function(card, idx) {
+    const cardImg = card.querySelectorAll("img")
+    const imgName = cardImgs[idx]
+    cardImg.forEach(function(node) {
+        node.setAttribute("src", imgName)     
+    })
+    console.log(cardImg)
+    // console.log(cardImg)
+    card.addEventListener("click", function flipCards(evt) {
+        const cardIdx = parseInt(evt.target.id.replace('c', ''))
+        //console.log(cardIdx)
+        // if the board is locked, don't do anything
+        if (isBoardLocked) return
+        // if the same card was clicked, return
+        if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
+        // toggle css class after the card was clicked
+        card.setAttribute("class", ".flipped")
+        // add flipped cards to the array
+        cardsFlipped.push(card)
+        // when two cards were clicked, check for a match
+        if (cardsFlipped.length === 2) {
+            checkForMatch()
+        }
+    })
+})
