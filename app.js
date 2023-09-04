@@ -6,7 +6,8 @@ let cardFlipped = false
 let isGameOver = false
 let firstFlippedCard, secondFlippedCard
 let matchedCards = []
-let timeLeft = 100
+let timeLeft = 20
+let movesTotal = 0
 
 
 /*----------------- Cached Element References ----------------*/
@@ -16,6 +17,11 @@ const cards = document.querySelectorAll(".card")
 const resetBtn = document.querySelector('#reset')
 // console.log(resetBtn)
 
+let countdownEl = document.getElementById('count-down') 
+// console.log(countdownEl)
+
+let totalMovesEl = document.getElementById('total-moves')
+// console.log(totalMovesEl)
 /*--------------------- Event Listeners ----------------------*/
 cards.forEach(card => card.addEventListener("click", flipCards)) 
 resetBtn.addEventListener('click', init)
@@ -42,7 +48,6 @@ function render() {
     showMessage('Click on the card to start!')
 }
 
-let countdownEl = document.getElementById('count-down') 
 
 function startTimer() {
     let timer = setInterval(function() {
@@ -55,6 +60,7 @@ function startTimer() {
         }
         if (timeLeft < 0) {
             countdownEl.textContent = 'Time is up!'
+            isBoardLocked = true
             clearInterval(timer)
             }
     }, 1000)
@@ -64,6 +70,8 @@ function flipCards() {
     // console.log('clicked')
     // console.log(this)
     startTimer() 
+    countMoves()
+
     if (isBoardLocked) return
     
     if (this === firstFlippedCard) return
@@ -82,6 +90,15 @@ function flipCards() {
     }
 }
 
+function countMoves() {
+    if (!isBoardLocked) {
+        movesTotal += 1
+        totalMovesEl.textContent = 'Total Moves: ' + movesTotal
+    } else {
+        return
+    }
+    
+}
 
 function checkForMatch() {
     if (firstFlippedCard.id === secondFlippedCard.id) {
