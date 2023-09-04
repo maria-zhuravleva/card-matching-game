@@ -1,66 +1,20 @@
 /*-------------------------- Constants -------------------------*/
-const cardImgs = [
-    "../assets/img/clouds.jpg", 
-    "../assets/img/summer.jpg",
-    "../assets/img/winter.jpg",
-    "../assets/img/clouds.jpg",
-    "../assets/img/tree.jpg",
-    "../assets/img/summer.jpg",
-    "../assets/img/winter.jpg",
-    "../assets/img/tree.jpg"
-]
+// const cardImgs = [
+//     "../assets/img/clouds.jpg", 
+//     "../assets/img/summer.jpg",
+//     "../assets/img/winter.jpg",
+//     "../assets/img/clouds.jpg",
+//     "../assets/img/tree.jpg",
+//     "../assets/img/summer.jpg",
+//     "../assets/img/winter.jpg",
+//     "../assets/img/tree.jpg"
+// ]
 
 
 /*--------------------- Variables (state) ---------------------*/
-// let cards = []
 let cardsFlipped = []
 let gameOver, isBoardLocked, pairsMatched = 0 
 // let movesTotal = 0
-// let boardCards = [
-//     {
-//         position: "c0",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     },
-//     {
-//         position: "c1",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     },
-//     {
-//         position: "c2",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     },
-//     {
-//         position: "c3",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     },
-//     {
-//         position: "c4",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     },
-//     {
-//         position: "c5",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     },
-//     {
-//         position: "c6",
-//         painting: shuffleCards(cardImgs),
-//         flipped: cardsFlipped.includes(shuffleCards(cardImgs)),
-//         matched: false
-//     }
-// ]
-
 
 /*----------------- Cached Element References ----------------*/
 // const cardOneEl = document.querySelector("#c0") 
@@ -73,7 +27,7 @@ let gameOver, isBoardLocked, pairsMatched = 0
 // const cardEightEl = document.querySelector("#c7")
 // console.log(cardEightEl)
 const cards = document.querySelectorAll(".card")
-console.log(cards)
+// console.log(cards)
 // const cardContainer = document.querySelector(".novice-card-container")
 // console.log(cardContainer)
 const resetBtn = document.querySelector('button')
@@ -86,14 +40,16 @@ resetBtn.addEventListener('click', init)
 //         console.log('Clicked card src:', cardClicked)
 //     })
 // )
+// const cardImg = card.querySelector("img")
+// const imgName = cardImgs[idx]
+// cardImg.setAttribute("src", imgName)
+// console.log(cardImg)
+
 cards.forEach(function(card) {
-    // const cardImg = card.querySelector("img")
-    // const imgName = cardImgs[idx]
-    // cardImg.setAttribute("src", imgName)
-    // console.log(cardImg)
     card.addEventListener("click", function flipCards(evt) {
-        const cardClicked = evt.target.className
+        const cardClicked = evt.target.id
         // console.log(cardClicked)
+        // add flipped cards to the array
         cardsFlipped.push(cardClicked)
         // console.log(cardClicked)
         // if the board is locked, don't do anything
@@ -102,16 +58,35 @@ cards.forEach(function(card) {
         if (cardsFlipped.length === 1 && cardsFlipped[0] === cardClicked) return
         // toggle css class after the card was clicked
         card.setAttribute("class", ".flipped")
+        // card.classList.add("flipped")
         // console.log(card)
-        // add flipped cards to the array
         // when two cards were clicked, check for a match
         if (cardsFlipped.length === 2) {
-            checkForMatch()
+            checkForMatch() 
         }
     })
 })
+console.log(cardsFlipped)
 
+function checkForMatch() {
+    if (cardsFlipped.length !== 2) return
 
+    const cardOne = cardsFlipped[0]
+    const cardTwo = cardsFlipped[1]
+
+    // const cardOneId = 
+    // const cardTwoId = 
+
+    if (cardOne === cardTwo) {
+        pairsMatched += 1
+        // console.log(pairsMatched)
+        // setTimeout(function() {
+        //     showMessage("It's a match!")
+            
+        //     cardsFlipped.length = 0         
+        // }, 1000)
+    }
+}
 // cards.forEach(function(card, idx) {
 //     const cardImg = card.querySelector("img")
 //     const imgName = cardImgs[idx]
@@ -134,6 +109,80 @@ cards.forEach(function(card) {
 //         }
 //     })
 // })
+// cards.forEach(function(card) {
+//     card.addEventListener("click", function flipCards(evt) {
+//         const cardClicked = evt.target.className
+//         // console.log(cardClicked)
+//         cardsFlipped.push(cardClicked)
+//         // console.log(cardClicked)
+//         // if the board is locked, don't do anything
+//         if (isBoardLocked) return
+//         // if the same card was clicked, return
+//         if (cardsFlipped.length === 1 && cardsFlipped[0] === cardClicked) return
+//         // toggle css class after the card was clicked
+//         card.classList.add("flipped")
+//         // console.log(card)
+//         // add flipped cards to the array
+//         // when two cards were clicked, check for a match
+//         if (cardsFlipped.length === 2) {
+//             function checkForMatch() {
+//                 if (cardsFlipped.length !== 2) return
+
+//                 const cardOne = cardsFlipped[0]
+//                 const cardTwo = cardsFlipped[1]
+
+//                 const cardOneClass = cardOne.classList
+//                 const cardTwoClass = cardTwo.classList
+
+//                 if (cardOneClass === cardTwoClass) {
+//                     pairsMatched += 1
+//                     setTimeout(function() {
+//                         showMessage("It's a match!")
+                        
+//                         cardsFlipped.length = 0         
+//                     }, 1000)
+//                 }
+//             }
+//         }
+//     })
+// })
+
+
+
+
+
+
+// function checkForMatch() {
+//     // check if there's two cards in the array, return if no
+//     if (cardsFlipped.length !== 2) return
+
+//     // assign flipped cards from the array to variables
+//     const cardOne = cardsFlipped[0]
+//     const cardTwo = cardsFlipped[1]
+
+//     // get the source attribute from two flipped cards
+//     const cardOneClass = cardOne.classList
+//     const cardTwoClass = cardTwo.classList
+
+//     if (cardOneClass === cardTwoClass) {
+//         // there's a match
+//         pairsMatched += 1
+//         console.log(pairsMatched)
+//         // wait for a second while checking if cards are matched
+//         setTimeout(function() {
+//             showMessage("It's a match!")
+
+//             cardsFlipped.length = 0         
+//         }, 1000)
+
+//         if (pairsMatched === 4) {
+//             // console.log("Congratulations! You won the game!")
+
+//             showMessage("Congratulations! You won the game!")
+//             }
+//     }
+// }
+
 
 /*------------------------- Functions -------------------------*/
 function init() {
@@ -147,37 +196,6 @@ function init() {
     // console.log(shuffleNodes(cards))
 }
 
-
-function checkForMatch() {
-    // check if there's two cards in the array, return if no
-    if (cardsFlipped.length !== 2) return
-
-    // assign flipped cards from the array to variables
-    const cardOne = cardsFlipped[0]
-    const cardTwo = cardsFlipped[1]
-
-    // get the source attribute from two flipped cards
-    const cardOneAttribute = cardOne.getAttribute('src')
-    const cardTwoAttribute = cardTwo.getAttribute('src')
-
-    if (cardOneAttribute === cardTwoAttribute) {
-        // there's a match
-        pairsMatched += 1
-        console.log(pairsMatched)
-        // wait for a second while checking if cards are matched
-        setTimeout(function() {
-            showMessage("It's a match!")
-
-            cardsFlipped.length = 0         
-        }, 1000)
-
-        if (pairsMatched === 4) {
-            // console.log("Congratulations! You won the game!")
-
-            showMessage("Congratulations! You won the game!")
-            }
-    }
-}
 
 function showMessage(message) {
     const messageEl = document.getElementById('message')
