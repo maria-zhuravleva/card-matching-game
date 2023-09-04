@@ -69,7 +69,6 @@ header {
     position: absolute;
     background: white;
     backface-visibility: hidden;
-    padding: 10px;
 }
 
 .front {

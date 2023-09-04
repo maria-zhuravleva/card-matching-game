@@ -1,29 +1,51 @@
 /*-------------------------- Constants -------------------------*/
 
 /*--------------------- Variables (state) ---------------------*/
-let gameOver = false
 let isBoardLocked = false
 let cardFlipped = false
+let isGameOver = false
 let firstFlippedCard, secondFlippedCard
-let pairsMatched = 0 
+let timeLeft = 100
+let matchedCards = []
 
 
 /*----------------- Cached Element References ----------------*/
 const cards = document.querySelectorAll(".card")
 // console.log(cards)
 
-// const resetBtn = document.querySelector('button')
+const resetBtn = document.querySelector('#reset')
+// console.log(resetBtn)
 
+let countdownEl = document.getElementById('countdown') 
 /*--------------------- Event Listeners ----------------------*/
 cards.forEach(card => card.addEventListener("click", flipCards)) 
-// resetBtn.addEventListener('click', init)
+resetBtn.addEventListener('click', init)
+
+
 
 
 
 /*------------------------- Functions -------------------------*/
 shuffleCards()
 
+function init() {
+    console.log('clicked')
+    unflipCards()
+    render()
+    // firstFlippedCard = 0
+    // secondFlippedCard = 0
+    // isBoardLocked = false
+    // cardFlipped = false
+}
+
+
+function render() {
+    showMessage('Click on the card to start!')
+}
+
 function flipCards() {
+    // console.log('clicked')
+    // console.log(this)
     if (isBoardLocked) return
     
     if (this === firstFlippedCard) return
@@ -32,7 +54,12 @@ function flipCards() {
     
     if (!cardFlipped) {
         cardFlipped = true
+        firstFlippedCard = this
+
+    } else {
+        cardFlipped = false
         secondFlippedCard = this
+        
         checkForMatch() 
     }
 }
@@ -40,11 +67,29 @@ function flipCards() {
 
 function checkForMatch() {
     if (firstFlippedCard.id === secondFlippedCard.id) {
-        console.log("There's a match!")
+        showMessage("There's a match!")
+        matchedCards.push(firstFlippedCard)
+        matchedCards.push(secondFlippedCard)
+        // console.log(matchedCards)
         firstFlippedCard.removeEventListener('click', flipCards)
-        secondFlippedCardFlippedCard.removeEventListener('click', flipCards)
+        secondFlippedCard.removeEventListener('click', flipCards)
+
+        checkWin()
+
     } else {
+        // return
         unflipCards()
+    }
+}
+
+function checkWin() {
+    if (matchedCards.length === 8) {
+        isGameOver = true
+        showMessage('Congratulation! You won!')
+        confetti.start(5000)
+
+    } else {
+        return
     }
 }
 
@@ -68,12 +113,6 @@ function shuffleCards() {
 function init() {
     gameOver = false
     isBoardLocked = false
-    // cardsFlipped.length = 0
-    // shuffleCards(cardImgs)
-    // console.log(shuffleCards(cardImgs))
-    //console.log(cardImgs)
-    // shuffleNodes(cards)
-    // console.log(shuffleNodes(cards))
 }
 
 
@@ -83,60 +122,14 @@ function showMessage(message) {
 
     setTimeout(function() {
         messageEl.textContent = ''
-    }, 2000)
+    }, 3000)
 }
 
-// function shuffleCards(arr) {
-//     const shuffledCards = []
-//     arr.forEach(function(card, idx) {
-//         const randomIdx = Math.floor(Math.random() * (idx +1))
-//         shuffledCards.splice(randomIdx, 0, card)
-//     })
-//     return shuffledCards
-// }
-// console.log(shuffleCards(cardImgs))
-// console.log(shuffleCards(cardImgs))
-// console.log(shuffleCards(cardImgs))
-
-
-// function shuffleCards(arr){
-//     let leng = arr.length
-//     for (let i = leng - 1; i > 0; i --) {
-//         let j = Math.floor(Math.random() * i)
-//         let temp = arr[i]
-//         arr[i] = arr[j]
-//         arr[j] = temp
-//     }
-//     console.log(arr)
-//     return arr
-// }
-
-
-
-    
-    // function(card, idx) {
-    // const cardImg = card.querySelectorAll("img")
-    // const imgName = cardImgs[idx]
-    // cardImg.forEach(function(node) {
-    //     node.setAttribute("src", imgName)     
-    // })
-    // console.log(cardImg)
-    // // console.log(cardImg)
-    // card.addEventListener("click", 
-
-// function flipCards(evt) {
-//     const cardIdx = parseInt(evt.target.id.replace('c', ''))
-//     //console.log(cardIdx)
-//     // if the board is locked, don't do anything
-//     if (isBoardLocked) return
-//     // if the same card was clicked, return
-//     if (cardsFlipped.length === 1 && cardsFlipped[0] === cardIdx) return
-//     // toggle css class after the card was clicked
-//     card.setAttribute("class", ".flipped")
-//     // add flipped cards to the array
-//     cardsFlipped.push(card)
-//     // when two cards were clicked, check for a match
-//     if (cardsFlipped.length === 2) {
-//         checkForMatch()
-//     }
-// })
+let timer = setInterval(function() {
+    countdownEl.textContent = timeLeft + 'seconds remaining'
+    timeLeft -= 1
+    if (timeLeft < 0) {
+        countdownEl.textContent = 'Finished!'
+        clearInterval(timer)
+        }
+}, 3000)
