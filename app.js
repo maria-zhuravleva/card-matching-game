@@ -1,4 +1,5 @@
 /*-------------------------- Constants -------------------------*/
+// const difficulties = {}
 
 /*--------------------- Variables (state) ---------------------*/
 let isBoardLocked = false
@@ -23,18 +24,16 @@ let countdownEl = document.getElementById('count-down')
 let totalMovesEl = document.getElementById('total-moves')
 // console.log(totalMovesEl)
 /*--------------------- Event Listeners ----------------------*/
-// cards.forEach(card => card.addEventListener("click", flipCards)) 
-
 resetBtn.addEventListener('click', init)
 
-document.addEventListener('DOMContentLoaded', function() {
-    init()
-})
+// document.addEventListener('DOMContentLoaded', function() {
+//     init()
+// })
 
 
 
 /*------------------------- Functions -------------------------*/
-// shuffleCards()
+init()
 
 function init() {
     // console.log('function called')
@@ -138,7 +137,7 @@ function checkForWin() {
     if (matchedCards.length === 8) {
         isGameOver = true
         showMessage('Congratulation! You won!')
-        confetti.start(5000)
+        confetti.start(3000)
 
     } else {
         return
@@ -162,12 +161,22 @@ function shuffleCards() {
     })
 }
 
+// function showMessage(message) {
+//     const messageEl = document.getElementById('message')
+//     const paragraph = document.createElement('p')
+//     paragraph.textContent = message
+//     messageEl.appendChild(paragraph)
+
+//     setTimeout(function() {
+//         paragraph.textContent = ''
+//     }, 3000)
+// }
+
 function showMessage(message) {
     const messageEl = document.getElementById('message')
     messageEl.textContent = message
 
     setTimeout(function() {
         messageEl.textContent = ''
-    }, 3000)
+    }, 4000)
 }
-
