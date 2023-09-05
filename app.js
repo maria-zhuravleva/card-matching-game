@@ -23,11 +23,13 @@ let countdownEl = document.getElementById('count-down')
 let totalMovesEl = document.getElementById('total-moves')
 // console.log(totalMovesEl)
 /*--------------------- Event Listeners ----------------------*/
-cards.forEach(card => card.addEventListener("click", flipCards)) 
+// cards.forEach(card => card.addEventListener("click", flipCards)) 
 
 resetBtn.addEventListener('click', init)
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    init()
+})
 
 
 
@@ -43,15 +45,17 @@ function init() {
     secondFlippedCard = null
     matchedCards = []
     timeLeft = 20
+    
     movesTotal = 0
-
+    
     totalMovesEl.textContent = 'Total Moves: 0'
-
+    
     cards.forEach(card => card.classList.remove('flipped'))
-
+    
+    render()
+    cards.forEach(card => card.addEventListener("click", handleCardClick)) 
     shuffleCards()
     startTimer()
-    render()
 }
 
 
@@ -62,42 +66,45 @@ function render() {
 
 function startTimer() {
     let timer = setInterval(function() {
-        countdownEl.textContent = 'Time left: ' + timeLeft
+        countdownEl.textContent = 'Time left: ' + timeLeft + ' seconds'
         timeLeft -= 1
         // console.log(timeLeft)
-        if (isGameOver) {
-            countdownEl.textContent = `Your time is ${timeLeft} seconds`
-            clearInterval(timer)
-        }
         if (timeLeft < 0) {
             countdownEl.textContent = 'Time is up!'
             isBoardLocked = true
             clearInterval(timer)
-            }
+        }
+        if (isGameOver) {
+            countdownEl.textContent = `Time Left: ${timeLeft} seconds`
+            clearInterval(timer)
+        }
     }, 1000)
 }
 
-function flipCards() {
-    // console.log('clicked')
-    // console.log(this)
-    startTimer() 
+function handleCardClick(evt) {
     countMoves()
 
     if (isBoardLocked) return
-    
-    if (this === firstFlippedCard) return
-    
-    this.classList.add('flipped')
-    
+
+    const clickedCard = evt.target.closest('.card')
+    // console.log(clickedCard)
+
+    if(!clickedCard) return
+
+    const imgFront = clickedCard.querySelector('.front')
+    // console.log(imgFront)
+
+    if (clickedCard === firstFlippedCard) return
+    clickedCard.classList.add('flipped')
+
     if (!cardFlipped) {
         cardFlipped = true
-        firstFlippedCard = this
-
+        firstFlippedCard = clickedCard
     } else {
         cardFlipped = false
-        secondFlippedCard = this
-        
-        checkForMatch() 
+        secondFlippedCard = clickedCard
+
+        checkForMatch()
     }
 }
 
@@ -117,13 +124,12 @@ function checkForMatch() {
         matchedCards.push(firstFlippedCard)
         matchedCards.push(secondFlippedCard)
         // console.log(matchedCards)
-        firstFlippedCard.removeEventListener('click', flipCards)
-        secondFlippedCard.removeEventListener('click', flipCards)
+        firstFlippedCard.removeEventListener('click', handleCardClick)
+        secondFlippedCard.removeEventListener('click', handleCardClick)
 
         checkForWin()
 
     } else {
-        // return
         unflipCards()
     }
 }
