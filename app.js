@@ -1,5 +1,5 @@
 /*-------------------------- Constants -------------------------*/
-// const difficulties = {}
+
 
 /*--------------------- Variables (state) ---------------------*/
 let isBoardLocked = false
@@ -36,7 +36,6 @@ resetBtn.addEventListener('click', init)
 init()
 
 function init() {
-    // console.log('function called')
     isBoardLocked = false
     cardFlipped = false
     isGameOver = false
@@ -86,12 +85,10 @@ function handleCardClick(evt) {
     if (isBoardLocked) return
 
     const clickedCard = evt.target.closest('.card')
-    // console.log(clickedCard)
 
     if(!clickedCard) return
 
     const imgFront = clickedCard.querySelector('.front')
-    // console.log(imgFront)
 
     if (clickedCard === firstFlippedCard) return
     clickedCard.classList.add('flipped')
@@ -122,7 +119,6 @@ function checkForMatch() {
         showMessage("There's a match!")
         matchedCards.push(firstFlippedCard)
         matchedCards.push(secondFlippedCard)
-        // console.log(matchedCards)
         firstFlippedCard.removeEventListener('click', handleCardClick)
         secondFlippedCard.removeEventListener('click', handleCardClick)
 
@@ -156,9 +152,18 @@ function unflipCards() {
 
 function shuffleCards() {
     cards.forEach(function(card) {
-        let randomNum = Math.floor(Math.random() * 8)
+        let randomNum = Math.floor(Math.random() * 12)
         card.style.order = randomNum 
     })
+}
+
+function showMessage(message) {
+    const messageEl = document.getElementById('message')
+    messageEl.textContent = message
+    
+    setTimeout(function() {
+        messageEl.textContent = ''
+    }, 4000)
 }
 
 // function showMessage(message) {
@@ -171,12 +176,3 @@ function shuffleCards() {
 //         paragraph.textContent = ''
 //     }, 3000)
 // }
-
-function showMessage(message) {
-    const messageEl = document.getElementById('message')
-    messageEl.textContent = message
-
-    setTimeout(function() {
-        messageEl.textContent = ''
-    }, 4000)
-}

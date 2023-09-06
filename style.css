@@ -93,8 +93,6 @@ header {
 }
 
 .board {
-    /* border-top: 1px solid black;
-    border-bottom: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
@@ -150,13 +148,11 @@ img {
     height: 40px;
     width: 800px;
     margin: 0 auto;
-    /* border-bottom: 1px solid black; */
 }
 
 
 p {
     text-align: center;
-    /* border: 1px solid black; */
 }
 
 
@@ -166,7 +162,6 @@ p {
     border-bottom: 1px solid black;
     padding: 10px;
     margin-top: 100px;
-    /* margin-right: 100px; */
     background-color: white;
 }
 
@@ -221,7 +216,6 @@ button:hover a {
 }
 
 #welcome-page {
-    border: 1px solid black;
     background-image: url(./assets/red.png);
     background-repeat: no-repeat;
     background-size: contain;
