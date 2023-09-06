@@ -10,6 +10,7 @@ let matchedCards = []
 let timerStarted = false
 let timeLeft = 10
 let movesTotal = 0
+let timer 
 
 /*----------------- Cached Element References ----------------*/
 const cards = document.querySelectorAll(".card")
@@ -33,10 +34,11 @@ function init() {
     isBoardLocked = false
     cardFlipped = false
     isGameOver = false
+    timerStarted = false
     firstFlippedCard = null
     secondFlippedCard = null
     matchedCards = []
-
+    
     timeLeft = 10
     
     movesTotal = 0
@@ -54,9 +56,9 @@ function render() {
     showMessage('Click on the card to start!')
 }
 
+
 function startTimer() {
-    let timer = setInterval(function() {
-        console.log(timeLeft)
+    timer = setInterval(function() {
         timeLeft -= 1
         if (timeLeft > 1) {
             countdownEl.textContent = 'Time left: ' + timeLeft + ' seconds'           
@@ -65,7 +67,9 @@ function startTimer() {
             showWinLoseMessage('Almost there! Try again!')
             countdownEl.textContent = 'Time is up!'
             isBoardLocked = true
+            isGameOver = true
             clearInterval(timer)
+
         } else if (timeLeft === 1) {
             countdownEl.textContent = `Time Left: ${timeLeft} second`
         }
