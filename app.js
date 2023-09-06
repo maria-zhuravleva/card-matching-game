@@ -1,5 +1,5 @@
-/*-------------------------- Constants -------------------------*/
-
+/*-------------------- Constants ------------------------------*/
+const soundWin = new Audio('./audio/win.wav')
 
 /*--------------------- Variables (state) ---------------------*/
 let isBoardLocked = false
@@ -7,9 +7,9 @@ let cardFlipped = false
 let isGameOver = false
 let firstFlippedCard, secondFlippedCard
 let matchedCards = []
-let timeLeft = 20
+let timerStarted = false
+let timeLeft = 30
 let movesTotal = 0
-
 
 /*----------------- Cached Element References ----------------*/
 const cards = document.querySelectorAll(".card")
@@ -19,6 +19,7 @@ const resetBtn = document.getElementById('reset')
 let countdownEl = document.getElementById('count-down') 
 
 let totalMovesEl = document.getElementById('total-moves')
+
 /*--------------------- Event Listeners ----------------------*/
 resetBtn.addEventListener('click', init)
 
@@ -26,10 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     init()
 })
 
-
-
 /*------------------------- Functions -------------------------*/
-// init()
 
 function init() {
     isBoardLocked = false
@@ -48,7 +46,6 @@ function init() {
     render()
     cards.forEach(card => card.addEventListener("click", handleCardClick))
     shuffleCards()
-    startTimer()
 }
 
 
@@ -56,20 +53,21 @@ function render() {
     showMessage('Click on the card to start!')
 }
 
-
 function startTimer() {
     let timer = setInterval(function() {
-        countdownEl.textContent = 'Time left: ' + timeLeft + ' seconds'
         timeLeft -= 1
-        // console.log(timeLeft)
-        if (timeLeft < 0) {
+        if (timeLeft > 1) {
+            countdownEl.textContent = 'Time left: ' + timeLeft + ' seconds'           
+        }
+        if (timeLeft <= 0) {
+            showWinLoseMessage('Almost there! Try again!')
             countdownEl.textContent = 'Time is up!'
             isBoardLocked = true
-            showWinLoseMessage('Almost there! Try again!')
             clearInterval(timer)
-        } if (timeLeft === 1) {
+        } else if (timeLeft === 1) {
             countdownEl.textContent = `Time Left: ${timeLeft} second`
         }
+
         if (isGameOver) {
             countdownEl.textContent = `Time Left: ${timeLeft} seconds`
             clearInterval(timer)
@@ -77,7 +75,14 @@ function startTimer() {
     }, 1000)
 }
 
+
 function handleCardClick(evt) {
+    
+    if (!timerStarted) {
+        startTimer()
+        timerStarted = true
+    }
+    
     countMoves()
 
     if (isBoardLocked) return
@@ -85,8 +90,6 @@ function handleCardClick(evt) {
     const clickedCard = evt.target.closest('.card')
 
     if(!clickedCard) return
-
-    // const imgFront = clickedCard.querySelector('.front')
 
     if (clickedCard === firstFlippedCard) return
 
@@ -102,6 +105,7 @@ function handleCardClick(evt) {
         checkForMatch()
     }
 }
+
 
 function countMoves() {
     if (!isBoardLocked) {
@@ -142,7 +146,10 @@ function checkForWin() {
         matchedCardsTotal = 8
     }
     if (matchedCards.length === matchedCardsTotal) {
-        showWinLoseMessage('Congratulation! You won!')
+        showWinLoseMessage("You've unlocked the card-matching master achievement!")
+
+        soundWin.volume = .05
+        soundWin.play()
         confetti.start(4000)
         isGameOver = true
 
@@ -174,7 +181,7 @@ function showMessage(message) {
 
     setTimeout(function() {
         messageEl.textContent = ''
-    }, 3000)
+    }, 4000)
 }
 
 function showWinLoseMessage (message) {
