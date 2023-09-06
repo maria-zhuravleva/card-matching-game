@@ -13,27 +13,23 @@ let movesTotal = 0
 
 /*----------------- Cached Element References ----------------*/
 const cards = document.querySelectorAll(".card")
-// console.log(cards)
 
 const resetBtn = document.getElementById('reset')
-// console.log(resetBtn)
 
 let countdownEl = document.getElementById('count-down') 
-// console.log(countdownEl)
 
 let totalMovesEl = document.getElementById('total-moves')
-// console.log(totalMovesEl)
 /*--------------------- Event Listeners ----------------------*/
 resetBtn.addEventListener('click', init)
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     init()
-// })
+document.addEventListener('DOMContentLoaded', function() {
+    init()
+})
 
 
 
 /*------------------------- Functions -------------------------*/
-init()
+// init()
 
 function init() {
     isBoardLocked = false
@@ -42,16 +38,15 @@ function init() {
     firstFlippedCard = null
     secondFlippedCard = null
     matchedCards = []
-    timeLeft = 20
+    timeLeft = 30
     
     movesTotal = 0
     
     totalMovesEl.textContent = 'Total Moves: 0'
     
     cards.forEach(card => card.classList.remove('flipped'))
-    
     render()
-    cards.forEach(card => card.addEventListener("click", handleCardClick)) 
+    cards.forEach(card => card.addEventListener("click", handleCardClick))
     shuffleCards()
     startTimer()
 }
@@ -70,7 +65,10 @@ function startTimer() {
         if (timeLeft < 0) {
             countdownEl.textContent = 'Time is up!'
             isBoardLocked = true
+            showWinLoseMessage('Almost there! Try again!')
             clearInterval(timer)
+        } if (timeLeft === 1) {
+            countdownEl.textContent = `Time Left: ${timeLeft} second`
         }
         if (isGameOver) {
             countdownEl.textContent = `Time Left: ${timeLeft} seconds`
@@ -88,9 +86,10 @@ function handleCardClick(evt) {
 
     if(!clickedCard) return
 
-    const imgFront = clickedCard.querySelector('.front')
+    // const imgFront = clickedCard.querySelector('.front')
 
     if (clickedCard === firstFlippedCard) return
+
     clickedCard.classList.add('flipped')
 
     if (!cardFlipped) {
@@ -129,11 +128,23 @@ function checkForMatch() {
     }
 }
 
+
 function checkForWin() {
-    if (matchedCards.length === 8) {
+    const difficultyLevel = localStorage.getItem('difficultyLevel')
+    let matchedCardsTotal
+    if (difficultyLevel === 'novice') {
+        matchedCardsTotal = 8
+    } else if (difficultyLevel === 'proficient') {
+        matchedCardsTotal = 10
+    } else if (difficultyLevel === 'maestro') {
+        matchedCardsTotal = 12
+    } else {
+        matchedCardsTotal = 8
+    }
+    if (matchedCards.length === matchedCardsTotal) {
+        showWinLoseMessage('Congratulation! You won!')
+        confetti.start(4000)
         isGameOver = true
-        showMessage('Congratulation! You won!')
-        confetti.start(3000)
 
     } else {
         return
@@ -160,19 +171,13 @@ function shuffleCards() {
 function showMessage(message) {
     const messageEl = document.getElementById('message')
     messageEl.textContent = message
-    
+
     setTimeout(function() {
         messageEl.textContent = ''
-    }, 4000)
+    }, 3000)
 }
 
-// function showMessage(message) {
-//     const messageEl = document.getElementById('message')
-//     const paragraph = document.createElement('p')
-//     paragraph.textContent = message
-//     messageEl.appendChild(paragraph)
-
-//     setTimeout(function() {
-//         paragraph.textContent = ''
-//     }, 3000)
-// }
+function showWinLoseMessage (message) {
+    const messageEl = document.getElementById('message')
+    messageEl.textContent = message
+}
