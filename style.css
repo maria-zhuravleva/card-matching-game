@@ -185,11 +185,6 @@ p {
     margin: 30px;
     border: 1px solid black;
     padding: 5px;
-    /* background-image: url(./assets/gray.png); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     width: 100px;
     height: 60px;
     outline: none;
@@ -220,4 +215,9 @@ button:hover a {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+.recollections {
+    text-decoration: none;
+    color: black;
 }
