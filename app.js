@@ -8,7 +8,7 @@ let isGameOver = false
 let firstFlippedCard, secondFlippedCard
 let matchedCards = []
 let timerStarted = false
-let timeLeft = 30
+let timeLeft = 10
 let movesTotal = 0
 
 /*----------------- Cached Element References ----------------*/
@@ -36,7 +36,8 @@ function init() {
     firstFlippedCard = null
     secondFlippedCard = null
     matchedCards = []
-    timeLeft = 30
+
+    timeLeft = 10
     
     movesTotal = 0
     
@@ -55,6 +56,7 @@ function render() {
 
 function startTimer() {
     let timer = setInterval(function() {
+        console.log(timeLeft)
         timeLeft -= 1
         if (timeLeft > 1) {
             countdownEl.textContent = 'Time left: ' + timeLeft + ' seconds'           
@@ -146,12 +148,12 @@ function checkForWin() {
         matchedCardsTotal = 8
     }
     if (matchedCards.length === matchedCardsTotal) {
+        isGameOver = true
         showWinLoseMessage("You've unlocked the card-matching master achievement!")
-
         soundWin.volume = .05
         soundWin.play()
-        confetti.start(4000)
-        isGameOver = true
+        startPetals()
+        // confetti.start(4000)
 
     } else {
         return
@@ -187,4 +189,93 @@ function showMessage(message) {
 function showWinLoseMessage (message) {
     const messageEl = document.getElementById('message')
     messageEl.textContent = message
+}
+
+function startPetals() {
+    const canvas = document.querySelector('canvas')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    const ctx = canvas.getContext('2d')
+    
+    const TOTAL = 100
+    const petalArray = []
+    
+    const petalImg = new Image()
+    petalImg.src = 'https://djjjk9bjm164h.cloudfront.net/petal.png'
+    petalImg.addEventListener('load', () => {
+        for (let i = 0; i < TOTAL; i++) {
+        petalArray.push(new Petal())
+        }
+        render()
+
+        setTimeout(stopPetals, 7000)
+    })
+    
+    function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        petalArray.forEach(petal => petal.animate())
+        window.requestAnimationFrame(render)
+    }
+    
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+    })
+    
+    let mouseX = 0
+    function touchHandler(e) {
+        mouseX = (e.clientX || e.touches[0].clientX) / window.innerWidth
+    }
+    window.addEventListener('mousemove', touchHandler)
+    window.addEventListener('touchmove', touchHandler)
+    
+    class Petal {
+        constructor() {
+        this.x = Math.random() * canvas.width
+        this.y = (Math.random() * canvas.height * 2) - canvas.height
+        this.w = 25 + Math.random() * 15
+        this.h = 20 + Math.random() * 10
+        this.opacity = this.w / 40
+        this.flip = Math.random()
+    
+        this.xSpeed = 1.5 + Math.random() * 2
+        this.ySpeed = 1 + Math.random() * 1
+        this.flipSpeed = Math.random() * 0.03
+        }
+    
+        draw() {
+        if (this.y > canvas.height || this.x > canvas.width) {
+            this.x = -petalImg.width
+            this.y = (Math.random() * canvas.height * 2) - canvas.height
+            this.xSpeed = 1.5 + Math.random() * 2
+            this.ySpeed = 1 + Math.random() * 1
+            this.flip = Math.random()
+        }
+        ctx.globalAlpha = this.opacity
+        ctx.drawImage(
+            petalImg, 
+            this.x, 
+            this.y, 
+            this.w * (0.6 + (Math.abs(Math.cos(this.flip)) / 3)), 
+            this.h * (0.8 + (Math.abs(Math.sin(this.flip)) / 5))
+        )
+        }
+    
+        animate() {
+        this.x += this.xSpeed + mouseX * 5
+        this.y += this.ySpeed + mouseX * 2
+        this.flip += this.flipSpeed
+        this.draw()
+        }
+    }
+    function stopPetals() {
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+        window.removeEventListener('mousemove', touchHandler);
+        window.removeEventListener('touchmove', touchHandler);
+        
+        petalArray.length = 0;
+    }
 }
