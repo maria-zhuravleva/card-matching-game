@@ -50,7 +50,7 @@ header {
 #header-novice-main, 
 .header-proficient,
 .header-maestro {
-    background-image: url(./assets/petals.png);
+    background-image: url(../assets/petals.png);
     background-size: contain;
     background-repeat: repeat;
     background-position: left;
@@ -59,7 +59,7 @@ header {
 #header-novice-main, 
 #header-proficient-main,
 #header-maestro-main {
-    background-image: url(./assets/pink.png), url(./assets/petals.png);
+    background-image: url(../assets/pink.png), url(../assets/petals.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
@@ -217,7 +217,7 @@ button:hover a {
 }
 
 #welcome-page {
-    background-image: url(./assets/red.png);
+    background-image: url(../assets/red.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
