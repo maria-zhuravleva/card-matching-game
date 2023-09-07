@@ -235,10 +235,6 @@ button:hover a {
         margin-top: 0;
     }
 
-    #header-main {
-        width: 300px;
-    }
-
     #body-novice,
     #welcome-page {
         margin-top: 5px;
@@ -267,12 +263,14 @@ button:hover a {
 
     #header-novice-main,
     .novice-info-container {
-        width: 350px;
+        /* width: 350px; */
+        width: 100%;
         margin: 0 auto;
     }
 
     .header-novice, .header-proficient, .header-maestro {
-        width: 300px;
+        /* width: 414px; */
+        width: 100%;
         margin-top: 5px;
     }
 
@@ -285,8 +283,10 @@ button:hover a {
 
     #header-novice-main, 
     #header-proficient-main,
-    #header-maestro-main {
-        width: 300px;
+    #header-maestro-main,
+    #header-main {
+        width: 100%;
+        /* width: 414px; */
     }
 
     #total-moves {
