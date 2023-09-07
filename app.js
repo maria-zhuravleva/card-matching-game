@@ -8,7 +8,7 @@ let isGameOver = false
 let firstFlippedCard, secondFlippedCard
 let matchedCards = []
 let timerStarted = false
-let timeLeft = 10
+let timeLeft = 30
 let movesTotal = 0
 let timer 
 
@@ -39,7 +39,7 @@ function init() {
     secondFlippedCard = null
     matchedCards = []
     
-    timeLeft = 10
+    timeLeft = 30
     
     movesTotal = 0
     
