@@ -1,5 +1,6 @@
 # Artful Recollections: Canvas Card Quest
 Welcome to the *Canvas Card Quest!* This interactive game combines the joy of art appreciation with the challenge of memory and concentration.
+I chose to create this card matching game as a way to combine my passion for art and gaming. I've always been fascinated by the power of visual expression and wanted to create an interactive experience that allows players to engage with stunning artworks.
 
 ![Alt text](assets/game-screenshot.png)
 
