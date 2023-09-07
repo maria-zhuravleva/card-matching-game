@@ -1,5 +1,5 @@
-# Art Card Matching Game
-Welcome to the *Art Card Matching Game!* This interactive game combines the joy of art appreciation with the challenge of memory and concentration.
+# Artful Recollections: Canvas Card Quest
+Welcome to the *Canvas Card Quest!* This interactive game combines the joy of art appreciation with the challenge of memory and concentration.
 
 ![Alt text](assets/game-screenshot.png)
 
@@ -41,6 +41,16 @@ Welcome to the *Art Card Matching Game!* This interactive game combines the joy 
 - **Artwork:** [Paintings](https://www.rawpixel.com/)
 - **Audio:** [Sound Effect](https://freesound.org/people/SergeQuadrado/sounds/460658/)
 - **Animation:** [Blossom Petals Falling](https://codepen.io/rudtjd2548/pen/qBpVzxP)
+
+## Ice Box: Future Improvements
+- [x] **Levels of Difficulty**
+- [x] **Font Design**
+- [x] **Sound**
+- [x] **Animation**
+- [ ] **Theme Customization**
+- [ ] **Leaderboard**
+- [ ] **Accessibility Impovements**
+- [ ] **Mobile Optimization**
 
 ## Author 🌸
 Mariia Zhuravleva | [LinkedIn](https://www.linkedin.com/in/mariia-zhuravleva-5232b3219/)

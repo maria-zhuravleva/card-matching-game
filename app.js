@@ -157,7 +157,6 @@ function checkForWin() {
         soundWin.volume = .05
         soundWin.play()
         startPetals()
-        // confetti.start(4000)
 
     } else {
         return
