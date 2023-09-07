@@ -51,7 +51,7 @@ I chose to create this card matching game as a way to combine my passion for art
 - [ ] **Theme Customization**
 - [ ] **Leaderboard**
 - [ ] **Accessibility Impovements**
-- [ ] **Mobile Optimization**
+- [x] **Mobile Optimization**
 
 ## Author 🌸
 Mariia Zhuravleva | [LinkedIn](https://www.linkedin.com/in/mariia-zhuravleva-5232b3219/)

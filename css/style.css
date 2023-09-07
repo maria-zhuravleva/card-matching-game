@@ -231,7 +231,6 @@ button:hover a {
 }
 
 
-/* @media screen and (max-width: 390px) and (max-height: 844px) { */
 @media screen and (max-width: 767px) {
     body {
         font-size: 14px;
@@ -273,7 +272,6 @@ button:hover a {
 
     .header-novice, .header-proficient, .header-maestro {
         width: 374px;
-        /* width: 100%; */
         margin-top: 5px;
     }
 
@@ -288,11 +286,8 @@ button:hover a {
     #header-proficient-main,
     #header-maestro-main,
     #header-main  {
-        /* width: 100%; */
         width: 350px;
     }
-
-
 
     #total-moves {
         margin-right: 1px;
