@@ -31,12 +31,13 @@ I chose to create this card matching game as a way to combine my passion for art
 
 - **Falling Petals Animation:** Enjoy a visual performance as delicate petals gently falling across the screen.
 
-## [Begin your immersive gaming quest now.](https://artful-recollections-quest.netlify.app/)
+## [Begin your immersive gaming quest here](https://artful-recollections-quest.netlify.app/)
 ## Technologies Used
 - HTML
 - CSS
 - JavaScript
 - Git
+- Netlify
 
 ## Credits
 - **Artwork:** [Paintings](https://www.rawpixel.com/)
